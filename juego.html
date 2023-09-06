@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <title>Piedra, Papel, Tijera</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            border: 5px solid rgba(48, 49, 51, 1);;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 2px solid #000;
+        }
+
+        .left-image{
+            max-width: 200px;
+            height: auto;
+        }
+        .right-image {
+            max-width: 200px;
+            height: auto;
+        }
+
+        .center {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 2px solid #000;
+        }
+
+        .options {
+            margin-top: 20px;
+        }
+
+        .options p {
+            font-size: 64px;
+            font-family: 'Archivo Black', sans-serif;
+            margin: 5px 0;
+            color: rgba(48, 49, 51, 1);;
+        }
+
+        .computadora{
+            font-size: 30px;
+            font-family: 'Archivo Black', sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        .jugador{
+            font-size: 30px;
+            font-family: 'Archivo Black', sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        .puntos{
+            font-size: 15px;
+            font-family: 'Archivo Black', sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        .claserondas{
+            font-size: 15px;
+            font-family: 'Archivo Black', sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        .rectangles {
+            background-color:  rgba(48, 49, 51, 1);
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .small-image {
+            max-width: 100px;
+            height: auto;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="left">
+                <img src="mickey.png" alt="Imagen 1" class="left-image">
+            </div>
+            <div class="center">
+                <div class="options">
+                    <p>PIEDRA</p>
+                    <p>PAPEL</p>
+                    <p>TIJERA</p>
+                </div>
+            </div>
+            <div class="right">
+                <img src="minnie.png" alt="Imagen 2" class="right-image">
+            </div>
+        </div>
+        <div class="rectangles">
+            <div class="rectangles">
+                <div class="rectangle 1">
+                    <h3 class="jugador">Jugador</h3>
+                    <h4 class="puntos">Puntos:</h4>
+                    <h4 class="claserondas">Rondas:</h4>
+                    <img src="piedra.png" alt="Imagen 3" class="small-image">
+                    <img src="papel.png" alt="Imagen 4" class="small-image">
+                    <img src="tijera.png" alt="Imagen 5" class="small-image">
+                </div>
+
+            <div class="rectangle 2">
+                <h3 class="computadora">Computadora</h3>
+                <h4 class="puntos">Puntos:</h4>
+                <h4 class="claserondas">Rondas:</h4>
+                <img src="piedra.png" alt="Imagen 6" class="small-image">
+                <img src="papel.png" alt="Imagen 7" class="small-image">
+                <img src="tijera.png" alt="Imagen 8" class="small-image">
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        //var opciones = ["piedra", "papel", "tijera"];
+    var opciones = [0, 1, 2];
+    var eleccionMaquina;
+    let puntusuario;    
+    let puntcomp;
+    let ppt=Number;
+    let pptmaquina;
+
+
+    //aleatorio
+function getComputerChoice(minimo, maximo) {
+    var numero = Math.floor(Math.random() * (maximo - minimo +1) + minimo);
+    return numero;
+}
+
+//eleccion usuario
+function playerSelection(eleccionUsuario){
+    var eleccionUsuario = prompt('¿PIEDRA , PAPEL O TIJERA?');
+    if(eleccionUsuario == piedra) {
+        ppt = 1;
+        }else{
+            if(eleccionUsuario == papel) {
+                ppt = 2;
+                }else{
+                    if(eleccionUsuario == tijera) {
+                        ppt = 3;
+                    }
+                }
+        }
+    }
+
+//elecciones y mensaje
+function playRound(playerSelection, computerSelection){
+    eleccionMaquina = getComputerChoice(0,2);
+    if(eleccionMaquina == 1) {
+        pptmaquina = piedra;
+        }else{
+            if(eleccionMaquina == 2) {
+                pptmaquina = papel;
+                }else{
+                    if(eleccionMaquina == 3) {
+                        pptmaquina = tijera;
+                    }
+                }
+        }
+    }
+    alert(eleccionUsuario + '+' + pptmaquina);
+    rondas = rondas + 1;
+    if(ppt == 0){//el usuario eligio piedra 
+        if(opciones[eleccionMaquina] == 1){//si la maquina eligio papel 
+            puntcomp = puntcomp + 1
+            console.log('La proxima!')
+        }else{
+            if(opciones[eleccionMaquina] == 2){
+                puntusuario = puntusuario + 1;
+                console.log('Muy bien!')
+                }else{
+                if(opciones[eleccionMaquina] == 0){
+                    console.log('Empate')
+                }
+            }
+        } 
+    }
+
+    if(ppt == 1){//el usuario eligio papel 
+        if(opciones[eleccionMaquina] == 2){
+            puntcomp = puntcomp + 1
+            console.log('La proxima!')
+        }else{
+            if(opciones[eleccionMaquina] == 0){
+                puntusuario = puntusuario + 1;
+                console.log('Muy bien!')                
+            }else{
+                if(opciones[eleccionMaquina] == 1){
+                    console.log('Empate')
+                }
+            }
+        }
+    }
+
+    if(ppt == 2) {//el usuario eligio tijera 
+        if(opciones[eleccionMaquina] == 1){
+            puntusuario = puntusuario + 1;
+            console.log('Muy bien!')
+        
+        }else{
+            if(opciones[eleccionMaquina] == 0){
+                puntcomp = puntcomp + 1
+                console.log('La proxima!')
+            }else{
+                if(opciones[eleccionMaquina] == 2) {
+                    console.log('Empate')
+                }
+            }
+        }
+    }
+
+
+
+//5 rondas
+let=rondas;
+function game(rondas){
+    rondas = cantrondas;
+    prompt(claserondas + cantrondas);
+    if (cantrondas == 5){
+        alert ('fin del juego');
+        if(puntusuario>puntcomp){
+            console.log('Ganaste!');
+        }else{
+            console.log('Perdiste :(')
+        }
+
+    }
+}
+
+
+
+    </script>
+</body>
+</html>
